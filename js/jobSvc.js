@@ -1,5 +1,5 @@
 app.service('jobSvc', function($http){
-	this.apikey = '4dac0445-fe2e-4518-86fd-b77886c8466c';
+	this.apikey = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 	this.url = 'https://fr.jooble.org/api/';
 	
 	//recherche d'annonces avec la méthode POST
