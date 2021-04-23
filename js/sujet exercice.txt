@@ -1,0 +1,25 @@
+Appli de recherche d'emploi:
+
+[Créer un formulaire de recherche de critères d'emploi]:
+- mots clés (obligatoire)
+- ville
+- rayon (0, 8, 16, 24, 40, 80) km
+- salaire mini (entre 1000 et 5000€)
+- offres recommandées / ou OR + JDP / all
+- gérer les erreurs (+ messages) et ne permettre la soumission que si champs valides
+
+- API en POST
+https://fr.jooble.org/api/<API KEY>
+retourne les annonces par groupe de 20
+prévoir pagination <<, <, > et >>
+bouton reset du formulaire pour effacer les critères
+attention, l'API refuse les paramètres vides ou nuls.
+(pour la clé: https://fr.jooble.org/api/about)
+
+- couleur différente selon le type de contrat
+- lien dans nouvel onglet de l'annonce
+- possibilité de stocker des annonces dans le LS
+- possibilité de voir et supprimer les annonces du LS
+
+Un service pour la gestion de l'API
+un service pour la gestion du LS (annonces + params, dont page actuelle)

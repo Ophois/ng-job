@@ -1,0 +1,78 @@
+<h3 class="text-center">{{ titre }}</h3>
+
+<form novalidate name="jobSearch">
+	{{ jobsearch.$invalid }}
+	<div class="form-group">
+		<label>Emploi<span class="required">*<span></label>
+		<input type="text" class="form-control" name="recherche" ng-model="recherche" 
+					 ng-required="true">
+		<div ng-if="jobSearch.recherche.$touched && jobSearch.recherche.$invalid" 
+				 class="alert alert-danger">
+			Ce champs est obligatoire
+	</div>
+	</div>
+	<div class="form-group">
+		<label>Ville</label>
+		<input type="text" class="form-control" ng-model="ville">
+	</div>
+	<div class="form-group">
+		<label>Rayon</label>
+		<select ng-model="rayon" ng-options="r.id as r.txt for r in rayons"  class="form-control"></select>
+	</div>
+	<div class="form-group">
+		<label>Salaire (entre 1000 et 5000€ mensuel)</label>
+		<input type="number" ng-model="salaire" name="salaire" min="1000" max="5000" 
+					 class="form-control"><br>
+		<div ng-if="jobSearch.salaire.$touched && (jobSearch.salaire.$error.min || jobSearch.salaire.$error.max)"
+				 class="alert alert-danger">
+			Le salaire doit être entre 1000 et 5000€ mensuel
+		</div>
+	</div>
+	<div class="form-group">
+		<input type="radio" ng-model="type" value="1"> <label>Offres d'emploi recommandées + JDP</label><br>
+		<input type="radio" ng-model="type" value="2"> <label>Offres d'emploi recommandées</label><br>
+		<input type="radio" ng-model="type" value="3"> <label>Toutes les Offres d'emploi</label><br>
+	</div>
+	<div class="form-group text-center">
+		<input type="submit" ng-disabled="jobSearch.$pristine && jobSearch.$invalid" 
+					 class="btn btn-purple" ng-click="validForm()">
+		<input type="reset" ng-click="resetForm()">
+	</div>
+</form>
+
+<div ng-if="annonces">
+	<h2 class="text-center">Annonces {{ start }} à {{ end }} sur {{ nbAnnonces }} </h2>
+	<div class="text-center" ng-if="nbAnnonces > 20">
+		<button ng-click="first()" class="btn btn-purple"> << </button>
+		<button ng-click="prev()" class="btn btn-purple"> < </button>
+		<button ng-click="next()" class="btn btn-purple"> > </button>
+		<button ng-click="last()" class="btn btn-purple"> >> </button>
+	</div>
+	<ul ng-repeat="ann in annonces" class="list-group">
+		<li class="list-group-item annonce"><strong>Titre: </strong> {{ ann.title }}</li>
+		<li class="list-group-item annonce"><strong>Ville: </strong> {{ ann.location }}</li>
+		<li class="list-group-item annonce">
+			<strong>Salaire: </strong> {{ ann.salary ? ann.salary : 'Non renseigné' }}
+		</li>
+		<li class="list-group-item annonce">
+			<strong>Contrat: </strong> {{ ann.type ? ann.type : 'Non renseigné' }}</li>
+		<li class="list-group-item annonce"><strong>Société: </strong> {{ ann.company }}</li>
+		<li class="list-group-item annonce"><strong>Source: </strong> {{ ann.source }}</li>
+		<li class="list-group-item annonce"><strong>Mise à jour: </strong> {{ ann.updated | vraiedate }}</li>
+		<li class="list-group-item annonce"><strong>Résumé: </strong> 
+			<!-- ng-bind-html permet d'afficher un contenu HTML dynamique (a sécuriser avec $sce) -->
+			<div ng-bind-html="ann.snippet"></div>
+		</li>
+		<li class="list-group-item annonce text-center">
+			<a ng-href="{{ann.link}}" target="_blank" class="btn btn-purple">Annonce complète</a>
+			<a ng-click="sauver(ann)" class="btn btn-purple">Sauvegarder</a>
+		</li>
+		<hr>
+	</ul>
+	<div class="text-center" ng-if="nbAnnonces > 20">
+		<button ng-click="first()" class="btn btn-purple"> << </button>
+		<button ng-click="prev()" class="btn btn-purple"> < </button>
+		<button ng-click="next()" class="btn btn-purple"> > </button>
+		<button ng-click="last()" class="btn btn-purple"> >> </button>
+	</div>
+</div>

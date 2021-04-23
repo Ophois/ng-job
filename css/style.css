@@ -1,0 +1,61 @@
+header img
+{
+	max-width: 50%;
+}
+/*bouton personnalisé*/
+.btn-purple
+{
+	background-color: purple ;
+	color: white;
+}
+.btn-purple:hover
+{
+	background-color: white;
+	color: purple;
+	border-color: purple;
+}
+.required
+{
+	color: red;
+	font-variant-position: super;
+}
+/* un peu de différence pour les annonces */
+.annonce
+{
+	background-color: #fcfcfc !important;
+}
+/* transition entre pages */
+.view-animate-container
+{
+	overflow: hidden;
+}
+.view-animate.ng-enter, .view-animate.ng-leave {
+  transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+	position: absolute;
+	width: 72%;
+}
+.view-animate.ng-enter {
+  left:100%;
+}
+.view-animate.ng-enter.ng-enter-active {
+  left:14%;
+}
+.view-animate.ng-leave.ng-leave-active {
+  left:-100%;
+}
+/* pour le pied de page fixe, éviter de bloquer le contenu dessous */
+.container
+{
+	margin-bottom: 50px;
+}
+/* pied de page fixe */
+.footer{
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	background: black;
+	color: white;
+	height: 30px;
+	line-height: 30px;
+}

@@ -1,0 +1,22 @@
+<h3 class="text-center">{{ titre }}</h3>
+
+<div ng-if="annonces">
+		<h2 class="text-center"> {{annonces.length }} Annonces</h2>
+		<ul ng-repeat="ann in annonces" class="list-group">
+		<li class="list-group-item annonce"><strong>Titre: </strong> {{ ann.title }}</li>
+		<li class="list-group-item annonce"><strong>Ville: </strong> {{ ann.location }}</li>
+		<li class="list-group-item annonce">
+			<strong>Salaire: </strong> {{ ann.salary ? ann.salary : 'Non renseigné' }}
+		</li>
+		<li class="list-group-item annonce">
+			<strong>Contrat: </strong> {{ ann.type ? ann.type : 'Non renseigné' }}</li>
+		<li class="list-group-item annonce"><strong>Société: </strong> {{ ann.company }}</li>
+		<li class="list-group-item annonce"><strong>Source: </strong> {{ ann.source }}</li>
+		<li class="list-group-item annonce"><strong>Mise à jour: </strong> {{ ann.updated | vraiedate }}</li>
+		<li class="list-group-item annonce text-center">
+			<a ng-href="{{ann.link}}" target="_blank" class="btn btn-purple">Annonce complète</a>
+			<a ng-click="supprimer($index)" class="btn btn-purple">Supprimer</a>
+		</li>
+		<hr>
+	</ul>
+</div>

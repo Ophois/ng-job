@@ -1,0 +1,33 @@
+Pour utiliser REST API vous devez envoyer une requête HTTP POST à https://fr.jooble.org/api/<API KEY>
+
+Exemple d'une requête JSON:
+{
+		"keywords": "account manager",
+		"location": "London",
+		"radius": "80",
+		"salary": "5000",
+		"page": "1"
+ }
+
+Description des champs de la requête
+keywords - (obligatoirement) – les mots-clés pour la recherche
+location - nom de ville pour la recherche
+radius - rayon de recherche (0, 8, 16, 24, 40, 80) kilomètres
+salary - limite inférieure du filtre de salaire. Le nombre entre 1000 - 5000 (€)
+page - numéro de la page 
+searchMode - mode de recherche
+1 - Afficher les offres d'emploi recommandées + *JDP (La description complète des offres d'emploi sur Jooble sert à la expérience utilisateur)
+2 - Afficher les offres d'emploi recommandées
+3 - Afficher toutes les offres d'emploi (est à déconseiller)
+
+
+Description des champs de la réponse 
+totalCount - Nombre total de résultats selon la requête
+
+Structure "job"
+title - poste
+location - nom de ville pour la recherche
+snippet - une petite partie de la description 
+salary - salaire
+source - site-source
+type - Type d'offre d’emploi (Tout, Temps plein, Intérimaire, Temps partiel, Stage, null)
